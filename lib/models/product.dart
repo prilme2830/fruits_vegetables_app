@@ -37,25 +37,25 @@ class Product {
     };
 
     const images = {
-      'apple': 'photo-1560806887-1e4cd0b6cbd6',
-      'banana': 'photo-1571771894821-ce9b6c11b08e',
-      'orange': 'photo-1547514701-42782101795e',
-      'mango': 'photo-1553279768-865429fa0078',
-      'pineapple': 'photo-1550258987-190a2d41a8ba',
-      'watermelon': 'photo-1587049352846-4a222e784d38',
-      'grape': 'photo-1537640538966-79f369143f8f',
-      'kiwi': 'photo-1585059895524-72359e06133a',
+      'apple': 'assets/images/apple.webp',
+      'banana': 'assets/images/banana.jpg',
+      'orange': 'assets/images/orange.jpg',
+      'mango': 'assets/images/manga.webp',
+      'pineapple': 'assets/images/pineapple.webp',
+      'watermelon': 'assets/images/watermelon.webp',
+      'grape': 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=700',
+      'kiwi': 'https://images.unsplash.com/photo-1585059895524-72359e06133a?w=700',
     };
 
-    final imageId = images[key] ?? 'photo-1560806887-1e4cd0b6cbd6';
+    final imageId = images[key] ??
+        'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=700';
 
     return Product(
       id: key.replaceAll(RegExp(r'[^a-z0-9]'), '-'),
       name: name,
       category: ProductCategory.fruit,
       price: prices[key] ?? 3.00,
-      imageUrl:
-          'https://images.unsplash.com/$imageId?w=700&q=85&auto=format&fit=crop',
+      imageUrl: imageId,
       description: 'Fresh $name',
     );
   }
@@ -66,8 +66,7 @@ class Product {
       name: 'Apple',
       category: ProductCategory.fruit,
       price: 2.50,
-      imageUrl:
-          'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=700',
+      imageUrl: 'assets/images/apple.webp',
       description: 'Crisp and sweet',
     ),
     Product(
@@ -75,8 +74,7 @@ class Product {
       name: 'Banana',
       category: ProductCategory.fruit,
       price: 1.80,
-      imageUrl:
-          'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=700',
+      imageUrl: 'assets/images/banana.jpg',
       description: 'Naturally sweet',
     ),
     Product(
@@ -84,8 +82,7 @@ class Product {
       name: 'Orange',
       category: ProductCategory.fruit,
       price: 2.20,
-      imageUrl:
-          'https://images.unsplash.com/photo-1547514701-42782101795e?w=700',
+      imageUrl: 'assets/images/orange.jpg',
       description: 'Juicy citrus fruit',
     ),
     Product(
@@ -93,8 +90,7 @@ class Product {
       name: 'Mango',
       category: ProductCategory.fruit,
       price: 3.50,
-      imageUrl:
-          'https://images.unsplash.com/photo-1553279768-865429fa0078?w=700',
+      imageUrl: 'assets/images/manga.webp',
       description: 'Tropical and juicy',
     ),
     Product(
@@ -102,8 +98,7 @@ class Product {
       name: 'Pineapple',
       category: ProductCategory.fruit,
       price: 4.50,
-      imageUrl:
-          'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=700',
+      imageUrl: 'assets/images/pineapple.webp',
       description: 'Sweet tropical fruit',
     ),
     Product(
@@ -111,8 +106,7 @@ class Product {
       name: 'Watermelon',
       category: ProductCategory.fruit,
       price: 5.00,
-      imageUrl:
-          'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=700',
+      imageUrl: 'assets/images/watermelon.webp',
       description: 'Refreshing and hydrating',
     ),
     Product(
@@ -120,8 +114,7 @@ class Product {
       name: 'Carrot',
       category: ProductCategory.vegetable,
       price: 1.60,
-      imageUrl:
-          'https://images.unsplash.com/photo-1445282768818-728615cc910a?w=700',
+      imageUrl: 'assets/images/carrot.jpg',
       description: 'Crunchy root vegetable',
     ),
     Product(
@@ -129,8 +122,7 @@ class Product {
       name: 'Broccoli',
       category: ProductCategory.vegetable,
       price: 2.80,
-      imageUrl:
-          'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=700',
+      imageUrl: 'assets/images/broccoli.png',
       description: 'Fresh green florets',
     ),
     Product(
@@ -138,8 +130,7 @@ class Product {
       name: 'Tomato',
       category: ProductCategory.vegetable,
       price: 2.00,
-      imageUrl:
-          'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=700',
+      imageUrl: 'assets/images/tomato.jpg',
       description: 'Bright and flavorful',
     ),
     Product(
@@ -147,8 +138,7 @@ class Product {
       name: 'Cucumber',
       category: ProductCategory.vegetable,
       price: 1.50,
-      imageUrl:
-          'https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=700',
+      imageUrl: 'assets/images/cucumber.jpg',
       description: 'Cool and crisp',
     ),
     Product(
@@ -156,8 +146,7 @@ class Product {
       name: 'Bell Pepper',
       category: ProductCategory.vegetable,
       price: 2.40,
-      imageUrl:
-          'https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=700',
+      imageUrl: 'assets/images/bellpepper.jpg',
       description: 'Colorful and crunchy',
     ),
     Product(
@@ -165,8 +154,7 @@ class Product {
       name: 'Spinach',
       category: ProductCategory.vegetable,
       price: 2.10,
-      imageUrl:
-          'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=700',
+      imageUrl: 'assets/images/spinach.jpg',
       description: 'Tender leafy greens',
     ),
   ];

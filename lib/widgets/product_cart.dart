@@ -16,18 +16,9 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Image.network(
-              product.imageUrl,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              errorBuilder: (_, _, _) => Container(
-                color: kLightGreen,
-                alignment: Alignment.center,
-                child: const Icon(Icons.eco, size: 48, color: kGreen),
-              ),
-            ),
-          ),
+           Expanded(
+             child: _buildImage(product.imageUrl),
+           ),
           Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
@@ -60,6 +51,31 @@ class ProductCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildImage(String source) {
+    if (source.startsWith('http://') || source.startsWith('https://')) {
+      return Image.network(
+        source,
+        width: double.infinity,
+        fit: BoxFit.cover,
+        errorBuilder: (_, _, _) => Container(
+          color: kLightGreen,
+          alignment: Alignment.center,
+          child: const Icon(Icons.eco, size: 48, color: kGreen),
+        ),
+      );
+    }
+    return Image.asset(
+      source,
+      width: double.infinity,
+      fit: BoxFit.cover,
+      errorBuilder: (_, _, _) => Container(
+        color: kLightGreen,
+        alignment: Alignment.center,
+        child: const Icon(Icons.eco, size: 48, color: kGreen),
       ),
     );
   }

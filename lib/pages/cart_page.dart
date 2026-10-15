@@ -47,13 +47,29 @@ class CartPage extends StatelessWidget {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
-                                child: Image.network(
-                                  item.product.imageUrl,
-                                  width: 75,
-                                  height: 75,
-                                  fit: BoxFit.cover,
-                                  errorBuilder: (_, _, _) =>
-                                      const Icon(Icons.eco, size: 55),
+                                child: Builder(
+                                  builder: (context) {
+                                    final imageUrl = item.product.imageUrl;
+                                    if (imageUrl.startsWith('http://') ||
+                                        imageUrl.startsWith('https://')) {
+                                      return Image.network(
+                                        imageUrl,
+                                        width: 75,
+                                        height: 75,
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (_, _, _) =>
+                                            const Icon(Icons.eco, size: 55),
+                                      );
+                                    }
+                                    return Image.asset(
+                                      imageUrl,
+                                      width: 75,
+                                      height: 75,
+                                      fit: BoxFit.cover,
+                                      errorBuilder: (_, _, _) =>
+                                          const Icon(Icons.eco, size: 55),
+                                    );
+                                  },
                                 ),
                               ),
                               const SizedBox(width: 12),

@@ -64,7 +64,9 @@ class _ProductsPageState extends State<ProductsPage> {
                             ),
                           ),
                         ),
-                        if (filtered.isNotEmpty && query.isEmpty && category == 'All')
+                        if (filtered.isNotEmpty &&
+                            query.isEmpty &&
+                            category == 'All')
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 10,
@@ -92,8 +94,13 @@ class _ProductsPageState extends State<ProductsPage> {
                       onChanged: (value) => setState(() => query = value),
                       decoration: InputDecoration(
                         hintText: 'Search products...',
-                        hintStyle: TextStyle(color: kInk.withValues(alpha: 0.4)),
-                        prefixIcon: Icon(Icons.search_rounded, color: kInk.withValues(alpha: 0.5)),
+                        hintStyle: TextStyle(
+                          color: kInk.withValues(alpha: 0.4),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search_rounded,
+                          color: kInk.withValues(alpha: 0.5),
+                        ),
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding: const EdgeInsets.symmetric(vertical: 0),
@@ -156,8 +163,12 @@ class _ProductsPageState extends State<ProductsPage> {
             else if (filtered.isEmpty)
               SliverFillRemaining(
                 child: EmptyState(
-                  icon: query.isNotEmpty ? Icons.search_off_rounded : Icons.eco_outlined,
-                  title: query.isNotEmpty ? 'No Results Found' : 'No Products Available',
+                  icon: query.isNotEmpty
+                      ? Icons.search_off_rounded
+                      : Icons.eco_outlined,
+                  title: query.isNotEmpty
+                      ? 'No Results Found'
+                      : 'No Products Available',
                   message: query.isNotEmpty
                       ? 'Try adjusting your search or filter'
                       : 'No products match the selected category',
@@ -173,27 +184,24 @@ class _ProductsPageState extends State<ProductsPage> {
                     mainAxisSpacing: 12,
                     childAspectRatio: 0.72,
                   ),
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final product = filtered[index];
-                      return ProductCard(
-                        product: product,
-                        onAdd: () {
-                          shop.addToCart(product);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('${product.name} added to cart'),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    final product = filtered[index];
+                    return ProductCard(
+                      product: product,
+                      onAdd: () {
+                        shop.addToCart(product);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('${product.name} added to cart'),
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
                             ),
-                          );
-                        },
-                      );
-                    },
-                    childCount: filtered.length,
-                  ),
+                          ),
+                        );
+                      },
+                    );
+                  }, childCount: filtered.length),
                 ),
               ),
           ],
@@ -222,11 +230,7 @@ class _CategoryChip extends StatelessWidget {
       label: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            size: 16,
-            color: selected ? Colors.white : kGreen,
-          ),
+          Icon(icon, size: 16, color: selected ? Colors.white : kGreen),
           const SizedBox(width: 6),
           Text(label),
         ],
